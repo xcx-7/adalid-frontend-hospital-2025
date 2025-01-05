@@ -1,0 +1,51 @@
+.website {
+    margin: 10rem 20rem;
+}
+
+.hospital-menu {
+    width: 1200px;
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+}
+
+.services-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.services-list li {
+    border: 1px solid;
+    width: 15rem;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.service__img {
+    width: 12rem;
+    height: 10rem;
+}
+    
+.service__department {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.btn-menu {
+    width: 10rem;
+}
+
+.appt-link {
+    color: white;
+    border: 1px solid white;
+    width: 10rem;
+    text-decoration: none;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+}
