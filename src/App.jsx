@@ -4,6 +4,7 @@ import ServiceList from "./components/ServiceList";
 import "./App.css";
 import "./styles/styles.css";
 import { useEffect, useState } from "react";
+import SearchComponent from "./components/SearchComponent";
 
 function App() {
 	const [servicesList, setServicesList] = useState([]);
@@ -49,6 +50,7 @@ function App() {
 			<a className="appt-link" href="#contact">Reservar cita</a>
 		</nav>
 
+		<SearchComponent />
 		<ServiceList services={servicesList} />
 		<div id="#staff">
 			<h2>Equipo médico</h2>
