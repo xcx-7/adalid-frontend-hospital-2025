@@ -5,6 +5,8 @@ import "./App.css";
 import "./styles/styles.css";
 import { useEffect, useState } from "react";
 import SearchComponent from "./components/SearchComponent";
+import SpecialtyView from "./views/SpecialtyView";
+import ShowDoctorComponent from "./components/ShowDoctorComponent";
 
 function App() {
 	const [servicesList, setServicesList] = useState([]);
@@ -51,6 +53,7 @@ function App() {
 		</nav>
 
 		<SearchComponent />
+		<SpecialtyView />
 		<ServiceList services={servicesList} />
 		<div id="#staff">
 			<h2>Equipo médico</h2>
@@ -62,7 +65,8 @@ function App() {
 				))}
 			</ul>
 		</div>
-		<AppointmentForm />
+		<AppointmentForm props={{}}/>
+		<ShowDoctorComponent />
 	</div>
   );
 }

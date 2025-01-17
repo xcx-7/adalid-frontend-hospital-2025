@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { PropTypes } from "prop-types";
 
-export default function AppointmentForm() {
-    
+export default function AppointmentForm({ props }) {
+
     const [contactData, setContactData] = useState({
-        name: "",
-        email: "",
-        specialty: "",
-        message: ""
+        name: props.name,
+        email: props.email,
+        specialty: props.specialty,
+        message: props.message
     });
 
     const updateForm = (e) => {
@@ -47,3 +48,11 @@ export default function AppointmentForm() {
     )
 };
 
+AppointmentForm.propTypes = {
+    props: PropTypes.shape({
+        name: PropTypes.string,
+        email: PropTypes.string,
+        specialty: PropTypes.string,
+        message: PropTypes.string
+    })
+}

@@ -1,3 +1,5 @@
+import { PropTypes } from "prop-types";
+
 export default function ServiceList({ services }) {
     return (
         <div>
@@ -14,3 +16,12 @@ export default function ServiceList({ services }) {
         </div>
     );
 };
+
+ServiceList.propTypes = {
+    services: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      imageUrl: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired
+    })).isRequired
+ }

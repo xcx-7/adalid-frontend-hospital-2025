@@ -20,7 +20,7 @@ class SearchComponent extends React.Component {
     render() {
         return (
             <div className='card mt-5' id="search">
-                <h4>Buscador</h4>
+                <h2>Buscador</h2>
                 <form className="search-form" onSubmit={this.submitSearch}>
                     <input type="text" name="searchField" className="form-control" ref={this.searchField} required/>
                     <button type="submit" className="btn btn-primary">Buscar</button>
