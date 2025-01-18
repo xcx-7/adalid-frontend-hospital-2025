@@ -29,6 +29,9 @@
 .service__img {
     width: 12rem;
     height: 10rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
     
 .service__department {
@@ -36,7 +39,8 @@
     font-weight: bold;
 }
 
-.btn-menu {
+.btn-menu,
+.btn-modal {
     width: 10rem;
 }
 
@@ -48,4 +52,18 @@
     padding: 5px;
     margin: 10px;
     border-radius: 5px;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+.search-form input,
+.search-form button {
+    padding: 10px;
+    margin: 10px;
 }

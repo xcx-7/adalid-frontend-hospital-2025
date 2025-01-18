@@ -1,13 +1,19 @@
 import AppointmentForm from "./components/AppointmentForm";
-import DoctorCard from "./components/DoctorCard";
 import ServiceList from "./components/ServiceList";
 import "./App.css";
 import "./styles/styles.css";
-import { useEffect, useState } from "react";
+import { Profiler, useEffect, useState } from "react";
+import SearchComponent from "./components/SearchComponent";
+import SpecialtyView from "./views/SpecialtyView";
+import DoctorList from "./components/DoctorList";
 
 function App() {
 	const [servicesList, setServicesList] = useState([]);
 	const [doctorList, setDoctorList] = useState([]);
+
+	const onRenderCallback = (id, phase, actualDuration) => {
+		console.log(`${id} (${phase}) tomó ${actualDuration}ms para renderizar`);
+	};
 
 	useEffect(() => {
 		fetch("data/services.json")
@@ -49,17 +55,12 @@ function App() {
 			<a className="appt-link" href="#contact">Reservar cita</a>
 		</nav>
 
+		<SearchComponent />
+		<Profiler id="specialtiesProfiler" onRender={onRenderCallback}>
+			<SpecialtyView />
+		</Profiler>
 		<ServiceList services={servicesList} />
-		<div id="#staff">
-			<h2>Equipo médico</h2>
-			<ul className="services-list">
-				{doctorList.map((dr) => (
-					<li key={dr.id}>
-						<DoctorCard doctor={dr} />
-					</li>
-				))}
-			</ul>
-		</div>
+		<DoctorList doctors={doctorList} />
 		<AppointmentForm />
 	</div>
   );
