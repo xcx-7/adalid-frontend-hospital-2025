@@ -1,7 +1,8 @@
+import React from "react";
 import SpecialtyList from "../components/SpecialtyList";
 import SpecialtyProvider from "../context/SpecialtyContext";
 
-export default function SpecialtyView() {
+const SpecialtyView = () => {
     return (
         <SpecialtyProvider>
             <div className='card mt-5 card-body'>
@@ -11,3 +12,5 @@ export default function SpecialtyView() {
         </SpecialtyProvider>
     );
 }
+
+export default React.memo(SpecialtyView);

@@ -1,58 +1,44 @@
-import { useState } from "react";
-import { PropTypes } from "prop-types";
+import { useRef } from "react";
 
-export default function AppointmentForm({ props }) {
-
-    const [contactData, setContactData] = useState({
-        name: props.name,
-        email: props.email,
-        specialty: props.specialty,
-        message: props.message
-    });
-
-    const updateForm = (e) => {
-        setContactData({ ...contactData, [e.target.name]: e.target.value });
-    }
-    
-    const submitData = (e) => {
+export default function AppointmentForm() {
+    const nameInputRef = useRef();
+    const emailInputRef = useRef();
+    const specialtyInputRef = useRef();
+    const messageInputRef = useRef();
+  
+    const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Formulario envaido:', contactData);
-        setContactData({ name: "", email: "", message: "", specialty: "" });
-    }
-
+        const name = nameInputRef.current.value;
+        const email = emailInputRef.current.value;
+        const specialty = specialtyInputRef.current.value;
+        const message = messageInputRef.current.value;
+        console.log(`Nombre: ${name}, Email: ${email}, Especialidad: ${specialty}, Mensaje: ${message}`);
+        nameInputRef.current.value = "";
+        emailInputRef.current.value = "";
+        specialtyInputRef.current.value = "";
+        messageInputRef.current.value = "";
+    };
+  
     return (
         <div className='card mt-5' id="contact">
             <h2>Reserva de hora médica</h2>
             <div className="card-body">
-                <form className="contact-form" onSubmit={submitData}>
+                <form className="contact-form" onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <input type="text" name="name" className="form-control" placeholder="Nombre"
-                            value={contactData.name} onChange={updateForm} required/>
+                        <input type="text" id="name" className="form-control" placeholder="Nombre" ref={nameInputRef} />
                     </div>
                     <div className="mb-3">
-                        <input type="email" name="email" className="form-control" placeholder="Email"
-                            value={contactData.email} onChange={updateForm} required/>
+                        <input type="email" id="email" className="form-control" placeholder="Email" ref={emailInputRef} />
                     </div>
                     <div className="mb-3">
-                        <input type="text" name="specialty" className="form-control" placeholder="Especialidad"
-                            value={contactData.specialty} onChange={updateForm} required/>
+                        <input type="text" id="specialty" className="form-control" placeholder="Especialidad" ref={specialtyInputRef} required />
                     </div>
                     <div className="mb-3">
-                        <textarea name="message" rows="4" className="form-control" placeholder="Mensaje"
-                            value={contactData.message} onChange={updateForm} required/>
+                        <textarea rows="4" id="message" className="form-control" placeholder="Mensaje" ref={messageInputRef} />
                     </div>
                     <button type="submit" className="btn btn-primary">Enviar</button>
                 </form>
             </div>
         </div>
-    )
-};
-
-AppointmentForm.propTypes = {
-    props: PropTypes.shape({
-        name: PropTypes.string,
-        email: PropTypes.string,
-        specialty: PropTypes.string,
-        message: PropTypes.string
-    })
+    );
 }

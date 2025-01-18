@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import Modal from "./Modal";
+import withPhoto from "../hoc/withPhoto";
+import ShowInfoComponent from "./ShowInfoComponent";
 
 export default function DoctorCard({ doctor }) {
 
@@ -8,18 +10,18 @@ export default function DoctorCard({ doctor }) {
     const openDetailsModal = () => setOpenDetails(true);
     const closeDetailsModal = () => setOpenDetails(false);
 
+    const DoctorComponent = withPhoto(ShowInfoComponent);
+
     return (
         <React.Fragment key={doctor.id}>
             <img src={doctor.imageUrl} className="service__img" alt={doctor.name} />
             <div className="card-body">
                 <h5 className="service__department">{doctor.name}</h5>
                 <button className="btn btn-primary" onClick={openDetailsModal}>Detalles</button>
+                
                 {openDetails && (
                     <Modal onClose={closeDetailsModal}>
-                        <h3>{doctor.name}</h3>
-                        <p className="card-text"><small className="text-muted">{doctor.specialty}</small></p>
-                        <img src={doctor.imageUrl} className="service__img" alt={doctor.name} />
-                        <p className="card-text">{doctor.experience}</p>      
+                        <DoctorComponent {...doctor} description={doctor.experience}/>
                     </Modal>
                 )}
             </div>
