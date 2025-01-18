@@ -31,7 +31,7 @@ export default function AppointmentForm() {
                         <input type="email" id="email" className="form-control" placeholder="Email" ref={emailInputRef} />
                     </div>
                     <div className="mb-3">
-                        <input type="text" id="specialty" className="form-control" placeholder="Especialidad" ref={specialtyInputRef} required />
+                        <input type="text" id="specialty" className="form-control" placeholder="Especialidad" ref={specialtyInputRef} />
                     </div>
                     <div className="mb-3">
                         <textarea rows="4" id="message" className="form-control" placeholder="Mensaje" ref={messageInputRef} />

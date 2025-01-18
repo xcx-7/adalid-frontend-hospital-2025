@@ -7,10 +7,12 @@ export default function DoctorList({ doctors }) {
         <div id="#staff">
             <h2>Equipo médico</h2>
             <ul className="services-list">
-                {doctors.map((doctor) => (
-                    <li key={doctor.id}>
-                        <DoctorCard doctor={doctor} />
-                    </li>
+                {doctors
+                    .filter(doctor => doctor.id)
+                    .map(doctor => (
+                        <li key={doctor.id}>
+                            <DoctorCard doctor={doctor} />
+                        </li>
                 ))}
             </ul>
         </div>
