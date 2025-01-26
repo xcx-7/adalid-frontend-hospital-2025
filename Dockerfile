@@ -21,21 +21,24 @@
 
 #################################Trying nginx#############################################
 
-
 # Stage 1: Build React App
-FROM node:18-alpine as build
+FROM node:18-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
 
-
 # Stage 2: Serve with NGINX
 FROM nginx:latest
 
-# Adjust /app/dist to your build folder (default: build or dist)
-COPY --from=build /app/dist /usr/share/nginx/html  
+# Adjust /app/build to match React's default build output folder
+COPY --from=build /app/build /usr/share/nginx/html  
+
+# Configure NGINX (Optional: Check the file path of your nginx.conf)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
+
+# Run NGINX in the foreground
 CMD ["nginx", "-g", "daemon off;"]
