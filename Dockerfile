@@ -21,24 +21,34 @@
 
 #################################Trying nginx#############################################
 
+
 # Stage 1: Build React App
 FROM node:18-alpine AS build
 WORKDIR /app
+
+# Copy package.json and package-lock.json
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
+
+# Copy the rest of the application files
 COPY . .
+
+# Build the application using Vite
 RUN npm run build
 
 # Stage 2: Serve with NGINX
 FROM nginx:latest
 
-# Adjust /app/build to match React's default build output folder
-COPY --from=build /app/build /usr/share/nginx/html  
+# Copy the build output from the first stage
+COPY --from=build /app/dist /usr/share/nginx/html
 
-# Configure NGINX (Optional: Check the file path of your nginx.conf)
+# Optional: Replace the default NGINX config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Expose the default NGINX port
 EXPOSE 80
 
-# Run NGINX in the foreground
+# Start NGINX
 CMD ["nginx", "-g", "daemon off;"]
