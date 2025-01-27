@@ -37,11 +37,11 @@ function App() {
 	<div className="App" id="home">
 		<nav className="navbar navbar-expand-lg navbar-dark bg-primary hospital-menu">
 			<div className="container-fluid">
-				<a className="navbar-brand" href="#home">Hello I'm CX-7</a>
+				<a className="navbar-brand" href="#home">Hello I'm CX-7 🟡🔵🔴🟠🟡🟢🔵🟣🟤⚫⚪🔴🟠🔵🟤⚫⚪🔴🔵🟣🟤🟤⚫⚫⚪</a>
 				<div className="collapse navbar-collapse" id="navbarNav">
 					<ul className="navbar-nav">
 						<li className="nav-item">
-							<a className="nav-link active" href="#home">Its my hospital</a>
+							<a className="nav-link active" href="#home">Its my hospital❤🧡💛💚💙💜🤎🖤🤍💔❣💕💞💓💗💖💘💝</a>
 						</li>
 						<li className="nav-item">
 							<a className="nav-link active" href="#staff">Médicos</a>
